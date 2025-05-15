@@ -9,7 +9,37 @@ T[] emptyArray = Array.Empty<T>();
 int[] emptyInts = Array.Empty<int>();
 string[] emptyStrings = Array.Empty<string>();
 ```
-## 2. Default of Nullable Type (T?)
+
+## 2. Empty Array<T?>
+```
+T?[] emptyArray = Array.Empty<T?>();
+
+// Examples:
+// Empty array of nullable integers
+int?[] emptyNullableIntArray = new int?[0];
+
+// Another way to create an empty array
+int?[] anotherEmptyArray = Array.Empty<int?>();
+
+Console.WriteLine(emptyNullableIntArray.Length); // Output: 0
+Console.WriteLine(anotherEmptyArray.Length);     // Output: 0
+
+// Checking for Emptiness:
+int?[] nullableIntArray = GetNullableIntArray(); // Assume this method returns an array
+
+if (nullableIntArray.Length == 0)
+{
+    Console.WriteLine("The nullable integer array is empty.");
+}
+
+// Using LINQ (requires System.Linq namespace)
+if (!nullableIntArray.Any())
+{
+    Console.WriteLine("The nullable integer array is also empty (using LINQ).");
+}
+```
+
+## 3. Default of Nullable Type (T?)
 ```
 T? nullableDefault = default(T?);
 
@@ -22,7 +52,8 @@ DateTime? defaultDate = default(DateTime?); // null
 // Or just assign null directly:
 int? x = null;
 ```
-## 3. Combined in Generics
+
+## 4. Combined in Generics
 If you want to handle both in a generic method:
 ```
 public static class ObjectExtensions
